@@ -173,7 +173,7 @@ Si fue individual, indica: "Taller realizado de forma individual."
 ## Estructura del proyecto
 
 ```
-semana_XX_Y_nombre_taller/
+Semana_XX_Nombre_Descriptivo/
 ├── python/          # Código Python (si aplica)
 ├── unity/           # Proyecto Unity (si aplica)
 ├── threejs/         # Código Three.js/React (si aplica)
@@ -196,7 +196,7 @@ Lista las fuentes, tutoriales, documentación o papers consultados durante el de
 
 ## Checklist de entrega
 
-- [ ] Carpeta con nombre `semana_XX_Y_nombre_taller`
+- [ ] Carpeta con nombre `Semana_XX_Nombre_Descriptivo`
 - [ ] Código limpio y funcional en carpetas por entorno
 - [ ] GIFs/imágenes incluidos con nombres descriptivos en carpeta `media/`
 - [ ] README completo con todas las secciones requeridas
