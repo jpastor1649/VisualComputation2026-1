@@ -44,23 +44,23 @@ Incluye al menos 2 capturas, GIFs o videos por cada implementación. Los archivo
 
 ### Python - Implementación
 
-<img>
+<img src="media/python_example_1.gif" alt="Python implementation example" width="600">
 
 Descripción de lo que muestra la imagen/GIF.
 
-<img>
+<img src="media/python_example_2.png" alt="Python implementation result" width="600">
 
 Descripción de lo que muestra la imagen.
 
 ### Unity - Implementación
 
-<img>
+<img src="media/unity_example.gif" alt="Unity implementation" width="600">
 
 Descripción de lo que muestra el GIF.
 
 ### Three.js - Implementación
 
-<img>
+<img src="media/threejs_example.gif" alt="Three.js implementation" width="600">
 
 Descripción de lo que muestra el GIF.
 
@@ -103,6 +103,16 @@ function Box() {
       <boxGeometry args={[1, 1, 1]} />
       <meshStandardMaterial color="orange" />
     </mesh>
+  )
+}
+
+function Scene() {
+  return (
+    <Canvas>
+      <OrbitControls />
+      <ambientLight intensity={0.5} />
+      <Box />
+    </Canvas>
   )
 }
 ```
