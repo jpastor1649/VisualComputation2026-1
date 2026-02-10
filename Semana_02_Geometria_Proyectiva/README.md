@@ -44,23 +44,23 @@ Incluye al menos 2 capturas, GIFs o videos por cada implementación. Los archivo
 
 ### Python - Implementación
 
-![Resultado Python 1](./media/python_resultado_1.gif)
+<img src="media/python_example_1.gif" alt="Python implementation example" width="600">
 
 Descripción de lo que muestra la imagen/GIF.
 
-![Resultado Python 2](./media/python_resultado_2.png)
+<img src="media/python_example_2.png" alt="Python implementation result" width="600">
 
 Descripción de lo que muestra la imagen.
 
 ### Unity - Implementación
 
-![Resultado Unity 1](./media/unity_resultado_1.gif)
+<img src="media/unity_example.gif" alt="Unity implementation" width="600">
 
 Descripción de lo que muestra el GIF.
 
 ### Three.js - Implementación
 
-![Resultado Three.js 1](./media/threejs_resultado_1.gif)
+<img src="media/threejs_example.gif" alt="Three.js implementation" width="600">
 
 Descripción de lo que muestra el GIF.
 
@@ -103,6 +103,16 @@ function Box() {
       <boxGeometry args={[1, 1, 1]} />
       <meshStandardMaterial color="orange" />
     </mesh>
+  )
+}
+
+function Scene() {
+  return (
+    <Canvas>
+      <OrbitControls />
+      <ambientLight intensity={0.5} />
+      <Box />
+    </Canvas>
   )
 }
 ```
@@ -163,7 +173,7 @@ Si fue individual, indica: "Taller realizado de forma individual."
 ## Estructura del proyecto
 
 ```
-semana_XX_Y_nombre_taller/
+Semana_XX_Nombre_Descriptivo/
 ├── python/          # Código Python (si aplica)
 ├── unity/           # Proyecto Unity (si aplica)
 ├── threejs/         # Código Three.js/React (si aplica)
@@ -186,13 +196,10 @@ Lista las fuentes, tutoriales, documentación o papers consultados durante el de
 
 ## Checklist de entrega
 
-- [ ] Carpeta con nombre `semana_XX_Y_nombre_taller`
+- [ ] Carpeta con nombre `Semana_XX_Nombre_Descriptivo`
 - [ ] Código limpio y funcional en carpetas por entorno
 - [ ] GIFs/imágenes incluidos con nombres descriptivos en carpeta `media/`
 - [ ] README completo con todas las secciones requeridas
 - [ ] Mínimo 2 capturas/GIFs por implementación
 - [ ] Commits descriptivos en inglés
 - [ ] Repositorio organizado y público
-
----
-
