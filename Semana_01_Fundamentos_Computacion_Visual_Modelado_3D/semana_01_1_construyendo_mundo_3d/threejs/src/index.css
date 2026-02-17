@@ -1,0 +1,273 @@
+/* ── Reset ──────────────────────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body, #root {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  font-family: 'Segoe UI', system-ui, sans-serif;
+}
+
+/* ── Layout ─────────────────────────────────────────────────────────────────── */
+.app-root {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+}
+
+/* El Canvas de R3F ocupa todo */
+.app-root canvas {
+  position: absolute;
+  inset: 0;
+}
+
+/* ── Panel lateral ──────────────────────────────────────────────────────────── */
+.ui-panel {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 260px;
+  background: rgba(9, 13, 20, 0.88);
+  backdrop-filter: blur(12px);
+  border-right: 1px solid rgba(255 255 255 / 0.07);
+  overflow-y: auto;
+  overflow-x: hidden;
+  scrollbar-width: thin;
+  scrollbar-color: #2a3a50 transparent;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+/* ── Header del panel ───────────────────────────────────────────────────────── */
+.panel-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 18px 16px 14px;
+  border-bottom: 1px solid rgba(255 255 255 / 0.07);
+}
+
+.panel-logo {
+  font-size: 28px;
+  line-height: 1;
+  color: #4488ff;
+  text-shadow: 0 0 16px #4488ff88;
+}
+
+.panel-title {
+  font-size: 17px;
+  font-weight: 700;
+  color: #e8edf4;
+  letter-spacing: 0.02em;
+}
+
+.panel-subtitle {
+  font-size: 11px;
+  color: #4a6080;
+  margin-top: 1px;
+}
+
+/* ── Secciones genéricas ────────────────────────────────────────────────────── */
+.panel-section {
+  padding: 14px 16px;
+  border-bottom: 1px solid rgba(255 255 255 / 0.05);
+}
+
+.section-title {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.10em;
+  text-transform: uppercase;
+  color: #4a6080;
+  margin-bottom: 10px;
+}
+
+/* ── Tarjetas de información ────────────────────────────────────────────────── */
+.info-grid {
+  display: flex;
+  gap: 6px;
+}
+
+.info-card {
+  flex: 1;
+  background: rgba(255 255 255 / 0.04);
+  border: 1px solid rgba(255 255 255 / 0.07);
+  border-top: 2px solid var(--accent, #4488ff);
+  border-radius: 6px;
+  padding: 8px 6px 6px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+}
+
+.info-label {
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #4a6080;
+}
+
+.info-value {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--accent, #e8edf4);
+  font-variant-numeric: tabular-nums;
+}
+
+/* ── Modos de visualización ─────────────────────────────────────────────────── */
+.mode-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px;
+  margin-bottom: 8px;
+}
+
+.mode-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  padding: 9px 6px;
+  background: rgba(255 255 255 / 0.04);
+  border: 1px solid rgba(255 255 255 / 0.08);
+  border-radius: 8px;
+  color: #6a8aaa;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  font-size: 12px;
+}
+
+.mode-btn:hover {
+  background: rgba(255 255 255 / 0.08);
+  color: #a0bdd0;
+}
+
+.mode-btn--active {
+  background: color-mix(in srgb, var(--mode-color) 18%, transparent);
+  border-color: var(--mode-color);
+  color: var(--mode-color);
+  box-shadow: 0 0 10px color-mix(in srgb, var(--mode-color) 30%, transparent);
+}
+
+.mode-icon {
+  font-size: 18px;
+  line-height: 1;
+}
+
+.mode-label {
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.mode-desc {
+  font-size: 11px;
+  color: #4a6080;
+  text-align: center;
+}
+
+/* ── Geometría ──────────────────────────────────────────────────────────────── */
+.shape-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.shape-btn {
+  width: 100%;
+  padding: 7px 10px;
+  text-align: left;
+  background: rgba(255 255 255 / 0.03);
+  border: 1px solid rgba(255 255 255 / 0.06);
+  border-radius: 6px;
+  color: #6a8aaa;
+  font-size: 12px;
+  cursor: pointer;
+  transition: all 0.12s ease;
+}
+
+.shape-btn:hover {
+  background: rgba(255 255 255 / 0.07);
+  color: #a0bdd0;
+}
+
+.shape-btn--active {
+  background: rgba(68, 136, 255, 0.18);
+  border-color: #4488ff88;
+  color: #88aaff;
+}
+
+.gltf-note {
+  margin-top: 8px;
+  font-size: 11px;
+  color: #f0a040;
+  background: rgba(240, 160, 64, 0.10);
+  border: 1px solid rgba(240, 160, 64, 0.25);
+  border-radius: 6px;
+  padding: 6px 8px;
+  line-height: 1.5;
+}
+
+.gltf-note code {
+  background: rgba(255 255 255 / 0.1);
+  border-radius: 3px;
+  padding: 0 3px;
+  font-size: 10.5px;
+}
+
+/* ── Color ──────────────────────────────────────────────────────────────────── */
+.color-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.color-picker {
+  width: 44px;
+  height: 36px;
+  padding: 2px;
+  border: 1px solid rgba(255 255 255 / 0.12);
+  border-radius: 8px;
+  background: rgba(255 255 255 / 0.05);
+  cursor: pointer;
+}
+
+.color-value {
+  font-size: 13px;
+  font-family: monospace;
+  color: #6a8aaa;
+  letter-spacing: 0.05em;
+}
+
+/* ── Controles de cámara ────────────────────────────────────────────────────── */
+.controls-help ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.controls-help li {
+  font-size: 11px;
+  color: #4a6080;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+kbd {
+  display: inline-block;
+  padding: 2px 6px;
+  font-size: 10px;
+  font-family: monospace;
+  background: rgba(255 255 255 / 0.07);
+  border: 1px solid rgba(255 255 255 / 0.12);
+  border-bottom-width: 2px;
+  border-radius: 4px;
+  color: #8aadcc;
+  white-space: nowrap;
+}
