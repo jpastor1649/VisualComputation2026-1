@@ -2,7 +2,7 @@
 
 ## Nombre del estudiante
 
-Samuel Ramirez
+John Alejandro Pastor Sandoval
 
 ## Fecha de entrega
 
@@ -66,11 +66,23 @@ Aplicación web React interactiva con visualización 3D en tiempo real:
 
 Visualización en Jupyter mostrando: análisis comparativo de vértices y caras en scatter 3D, estadísticas de cada modelo en tabla Pandas, información de watertight meshes y detección de vértices duplicados.
 
+![GIF Eyeball Python](./media/gifs/eyeball_python.gif)
+
+Rotación 360° del modelo Eyeball generado con Vedo. Muestra la geometría completa con visualización de puntos 3D.
+
+![GIF Duck Python](./media/gifs/Duck_python.gif)
+
+Rotación 360° del modelo Duck generado con Vedo. Visualización animada del modelo en geometría pura.
+
 ### Three.js - Visualizador Interactivo
 
 ![Visualizador Three.js](./media/pruebas_threejs.png)
 
 Interfaz web con panel lateral de control, selector de modelos con botones activos, información estadística en tiempo real (vértices, triángulos, meshes, dimensiones) y visualización 3D con OrbitControls. Screenshots muestran los tres modelos: Eyeball OBJ, Eyeball STL y Duck GLB.
+
+![GIF Three.js Interactivo](./media/gifs/threejs_visualizador.gif)
+
+Demostración de la aplicación web React Three Fiber: alternancia entre modelos OBJ, STL y GLB con rotación e interactividad en tiempo real. Muestra el panel de información actualizándose dinámicamente.
 
 ---
 
