@@ -1,4 +1,4 @@
-# Taller Jerarquías Transformaciones
+# Taller Jerarquias Transformaciones
 
 ## Nombre del estudiante
 
@@ -6,85 +6,156 @@ John Alejandro Pastor Sandoval
 
 ## Fecha de entrega
 
-2026-02-18
+2026-02-19
 
 ---
 
 ## Descripción breve
 
-En este taller se exploró el sistema de jerarquías de transformaciones en computación visual, fundamental para entender cómo los objetos 3D se relacionan y transforman en espacios coordenados. El objetivo principal fue implementar una estructura padre-hijo-nieto para demostrar cómo las transformaciones (rotación y traslación) se heredan y encadenan en niveles jerárquicos.
+Este taller explora los conceptos fundamentales de jerarquías y transformaciones en sistemas 3D, usando dos lenguajes y entornos diferentes: Unity y Three.js. El objetivo principal es demostrar cómo la transformación de un objeto padre afecta automáticamente a sus hijos en la jerarquía de escena, y cómo cada nivel puede aplicar sus propias transformaciones de forma independiente.
 
-Se desarrolló una aplicación interactiva con React Three Fiber que visualiza en tiempo real cómo las transformaciones aplicadas a un objeto padre afectan a todos sus descendientes, mientras que cada nivel puede mantener sus propias transformaciones locales. Esto permitió comprender conceptos clave como matrices de transformación, espacios locales y globales, y la composición de transformaciones en gráficos 3D.
+Se implementó un sistema de tres niveles jerárquicos en ambos entornos: un objeto padre que controla la posición, rotación y escala general; un objeto hijo que hereda las transformaciones del padre pero puede tener sus propias transformaciones locales; y un objeto nieto que hereda las transformaciones acumuladas del padre y el hijo. Esta estructura permite entender claramente cómo funcionan las transformaciones compuestas y la propagación de cambios a través de la jerarquía.
 
-La implementación incluyó controles interactivos mediante Leva que permiten manipular rotaciones (Rx, Ry, Rz) y traslaciones (Px, Py, Pz) en tiempo real para tres niveles jerárquicos, proporcionando una experiencia inmersiva de aprendizaje sobre transformaciones encadenadas.
+La implementación incluye controles interactivos en ambos entornos, permitiendo manipular en tiempo real cada nivel de la jerarquía y observar cómo se afectan mutuamente. Esta experiencia interactiva facilita la comprensión profunda de conceptos esenciales en modelado 3D y animación.
 
 ---
 
 ## Implementaciones
 
+### Unity
+
+En Unity, se desarrolló un proyecto completo que demuestra la jerarquía de transformaciones mediante un script `ControladorJerarquia.cs`. La implementación incluye tres GameObjects independientes (padre, hijo y nieto) conectados en una jerarquía visual en el Inspector. 
+
+El script principal proporciona una interfaz de usuario interactiva con tres sliders que controlan:
+- **Posición X del padre**: Desplaza horizontalmente todo el sistema jerárquico
+- **Rotación Y del padre**: Rota el sistema completo alrededor del eje vertical
+- **Escala del padre**: Amplía o reduce el tamaño del sistema completo
+
+Además, se implementó:
+- Una animación de levitación suave en el padre usando funciones trigonométricas
+- Un `LineRenderer` que visualiza las conexiones entre los nodos
+- Un texto de depuración que muestra los valores actuales de las transformaciones
+- Un botón de pausa para detener la animación de levitación
+
+La interfaz de usuario proporciona retroalimentación visual instantánea de cómo cada transformación del padre afecta a toda la jerarquía.
+
 ### Three.js / React Three Fiber
 
-Se implementó una aplicación web completa utilizando Vite como bundler, React Three Fiber para renderización 3D y Leva para controles interactivos. La arquitectura está compuesta por dos componentes principales:
+En Three.js, se implementó una solución moderna usando React y la librería `react-three-fiber`. El componente `HierarchyDemo.jsx` crea una jerarquía de tres niveles:
 
-**App.jsx**: Canvas de Three.js que configura la escena con iluminación (luz ambiental y punto de luz direccional), cámara posicionada estratégicamente y fondo oscuro para mejor contraste visual.
+1. **Padre (Nivel 1)**: Un cubo rojo de 1.5×1.5×1.5 unidades
+2. **Hijo (Nivel 2)**: Un cilindro azul que se posiciona relativo al padre
+3. **Nieto (Nivel 3)**: Una esfera verde y un pequeño cubo amarillo que se posicionan relativo al hijo
 
-**HierarchyDemo.jsx**: Componente que implementa la jerarquía de tres niveles:
-- **Nivel 1 (Padre)**: Cubo rojo que actúa como nodo raíz
-- **Nivel 2 (Hijo)**: Cilindro azul posicionado relativamente al padre
-- **Nivel 3 (Nieto)**: Esfera verde y cubo amarillo anidados dentro del grupo hijo
+La implementación utiliza la librería `leva` para crear controles interactivos para cada nivel jerárquico:
+- Cada nivel tiene controles independientes para: posición X, Y, Z; rotación X, Y, Z
+- Se implementó un modo de auto-rotación que hace girar automáticamente el padre
+- Los objetos se renderizan con sombras para mayor realismo
+- Se usa `useFrame` para actualizar las transformaciones en cada fotograma
 
-Cada nivel posee controles independientes en Leva para:
-- Rotación en tres ejes (Rx, Ry, Rz): rango de -π a π
-- Traslación en tres ejes (Px, Py, Pz): rango de -10 a 10
-- Auto-rotación opcional del padre para visualizar dinámicamente
-
-Las transformaciones se actualizan en cada frame mediante `useFrame`, asegurando que los cambios en los sliders de Leva se reflejen inmediatamente en la escena. Las líneas de conexión visuales permiten ver claramente la relación jerárquica entre los objetos.
+La ventaja de esta implementación es que permite entender cómo las transformaciones se heredan y se componen en una jerarquía de escena, con la capacidad de ver en tiempo real cómo cada cambio afecta a todos los niveles inferiores.
 
 ---
 
 ## Resultados visuales
 
-### Three.js / React Three Fiber - Jerarquía de Transformaciones
+### Unity - Jerarquía Base
 
-![Jerarquía inicial](./media/threejs_jerarquia_inicial.png)
+![Resultado Unity - Jerarquía](./media/unity-jerarquia.png)
 
-Visualización de la escena 3D con los tres niveles de jerarquía: cubo rojo (padre), cilindro azul (hijo) y esfera verde (nieto). Los objetos están conectados por líneas de referencia que muestran la relación espacial entre ellos.
+Esta captura muestra la interfaz completa del proyecto Unity con los tres GameObjects en la escena. Se puede observar el padre (posicionado por los sliders), el hijo conectado al padre, y el nieto conectado al hijo. El LineRenderer crea un trazo visual que conecta los tres nodos, facilitando la visualización de la jerarquía. Los valores en pantalla muestran la posición X, rotación Y y escala del padre.
 
-![Transformación nieto independiente](./media/threejs_nieto_independiente.gif)
+### Unity - Animación de Jerarquía
 
-Visualización de transformación independiente del nieto: mientras el padre mantiene una rotación, el nieto rota independientemente en su propio espacio local, demostrando la composición de transformaciones.
+![Resultado Unity - Animación](./media/jerarquia-unity.gif)
+
+Este GIF muestra la animación en tiempo real del sistema jerárquico de Unity. Se puede observar:
+- La levitación suave del padre (movimiento vertical sinusoidal)
+- La rotación controlada por el slider de rotación Y
+- Cómo el hijo y el nieto siguen los movimientos del padre automáticamente
+- Las conexiones línea visualizadas per el LineRenderer
+
+### Three.js - Jerarquía Inicial
+
+![Resultado Three.js - Inicial](./media/threejs_jerarquia_inicial.png)
+
+Esta captura muestra la posición inicial de los tres objetos en Three.js: el cubo rojo (padre) en el centro, el cilindro azul (hijo) posicionado a la derecha del padre, y la esfera verde (nieto) posicionada a la derecha del cilindro. Esta configuración inicial permite ver claramente cómo cada elemento está posicionado de forma relativa a su padre.
+
+### Three.js - Transformación del Nieto
+
+![Resultado Three.js - Nieto](./media/threejs_nieto_independiente.gif)
+
+Este GIF demuestra la versatilidad del sistema jerárquico en Three.js. El video muestra cómo el nieto (esfera verde) puede tener su propia rotación independiente mientras mantiene su posición relativa al hijo. Se puede observar el movimiento del cubo pequeño amarillo (gran-nieto) que orbita alrededor del nieto, mostrando cómo las transformaciones se propagan a través de múltiples niveles jerárquicos.
 
 ---
 
 ## Código relevante
 
-### App.jsx - Configuración del Canvas
+### Código Unity - Script de Control de Jerarquía
 
-```jsx
-import { Canvas } from '@react-three/fiber'
-import HierarchyDemo from './HierarchyDemo'
-import './App.css'
+```csharp
+using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
-function App() {
-  return (
-    <div className="app-container">
-      <Canvas
-        camera={{ position: [0, 0, 15], fov: 50 }}
-        style={{ width: '100%', height: '100vh' }}
-      >
-        <color attach="background" args={['#1a1a2e']} />
-        <ambientLight intensity={0.5} />
-        <pointLight position={[10, 10, 10]} intensity={1} />
-        <HierarchyDemo />
-      </Canvas>
-    </div>
-  )
+public class ControladorJerarquia : MonoBehaviour
+{
+    [Header("Jerarquía 3D")]
+    public Transform nodoPadre;
+    public Transform nodoHijo;
+    public Transform nodoNieto;
+    public LineRenderer linea;
+
+    [Header("Interfaz UI")]
+    public Slider s_Pos;
+    public Slider s_Rot;
+    public Slider s_Escala;
+    public TextMeshProUGUI textoDebug;
+    public Button botonPausa;
+
+    private bool estaAnimando = true;
+    private float tiempo = 0f;
+
+    void Start()
+    {
+        // Limites de los sliders
+        s_Pos.minValue = -4f;    s_Pos.maxValue = 4f;
+        s_Rot.minValue = 0f;     s_Rot.maxValue = 360f;
+        s_Escala.minValue = 0.5f; s_Escala.maxValue = 2f;
+        
+        botonPausa.onClick.AddListener(() => estaAnimando = !estaAnimando);
+        linea.positionCount = 3;
+    }
+
+    void Update()
+    {
+        // Movimiento de levitación del padre
+        float levitacion = 0;
+        if (estaAnimando) {
+            tiempo += Time.deltaTime * 2f;
+            levitacion = Mathf.Sin(tiempo) * 2f;
+        }
+
+        // Aplicar transformaciones
+        nodoPadre.position = new Vector3(s_Pos.value, levitacion, 0);
+        nodoPadre.rotation = Quaternion.Euler(0, s_Rot.value, 0);
+        nodoPadre.localScale = Vector3.one * s_Escala.value;
+
+        // Actualizar línea de conexión
+        linea.SetPosition(0, nodoPadre.position);
+        linea.SetPosition(1, nodoHijo.position);
+        linea.SetPosition(2, nodoNieto.position);
+
+        // Mostrar valores actuales en UI
+        textoDebug.text = $"<b>Valores del Padre</b>\n" +
+                          $"Posición X: {s_Pos.value:F2}\n" +
+                          $"Rotación Y: {s_Rot.value:F0}°\n" +
+                          $"Escala: {s_Escala.value:F2}x";
+    }
 }
-
-export default App
 ```
 
-### HierarchyDemo.jsx - Estructura jerárquica con controles
+### Código Three.js - Componente de Demostración Jerárquica
 
 ```jsx
 import { useRef } from 'react'
@@ -156,29 +227,24 @@ function HierarchyDemo() {
 
   return (
     <group ref={parentGroupRef}>
-      {/* PADRE (Nivel 1) - Cubo rojo */}
-      <mesh position={[0, 0, 0]} castShadow receiveShadow>
+      {/* PADRE - Cubo rojo */}
+      <mesh castShadow receiveShadow>
         <boxGeometry args={[1.5, 1.5, 1.5]} />
-        <meshStandardMaterial color="#ff6b6b" wireframe={false} />
+        <meshStandardMaterial color="#ff6b6b" />
       </mesh>
 
-      {/* HIJO (Nivel 2) - Cilindro azul */}
+      {/* HIJO - Cilindro azul */}
       <group ref={childGroupRef}>
         <mesh castShadow receiveShadow>
           <cylinderGeometry args={[0.5, 0.5, 2, 32]} />
           <meshStandardMaterial color="#4ecdc4" />
         </mesh>
 
-        {/* NIETO (Nivel 3) - Esfera verde + Cubo amarillo */}
+        {/* NIETO - Esfera verde */}
         <group ref={grandchildRef}>
           <mesh castShadow receiveShadow>
             <sphereGeometry args={[0.6, 32, 32]} />
             <meshStandardMaterial color="#95e1d3" />
-          </mesh>
-
-          <mesh position={[2, 0, 0]} castShadow receiveShadow>
-            <boxGeometry args={[0.8, 0.8, 0.8]} />
-            <meshStandardMaterial color="#ffd93d" />
           </mesh>
         </group>
       </group>
@@ -193,16 +259,17 @@ export default HierarchyDemo
 
 ## Prompts utilizados
 
-Se utilizaron las siguientes indicaciones con asistencia de IA durante el desarrollo:
+Durante el desarrollo de este taller se utilizaron las siguientes consultas y prompts con herramientas de IA:
 
-```
-"Crea un código en Three.js con React Three Fiber que haga lo siguiente:
-- Crear un proyecto con Vite y React Three Fiber
-- Crear una estructura padre-hijo usando <group> y varios objetos (<mesh>)
-- Aplicar transformaciones al nodo padre (rotación y traslación) y observar el comportamiento de los hijos
-- Usar Leva para controlar la rotación y traslación en tiempo real con sliders
-- Agregar un tercer nivel en la jerarquía para visualizar transformaciones encadenadas"
-```
+1. "Explícame cómo funcionan las jerarquías de transformaciones en 3D, especialmente cómo las transformaciones del padre afectan a los hijos"
+
+2. "¿Cómo implemento controles interactivos con Leva en react-three-fiber para manipular en tiempo real la posición, rotación y escala de objetos?"
+
+3. "¿Cuál es la mejor forma de visualizar la jerarquía de nodos en Unity usando LineRenderer?"
+
+4. "Cómo crear una animación de levitación suave usando funciones trigonométricas en Unity"
+
+5. "¿Cómo se componen las transformaciones en sistemas jerárquicos 3D y qué diferencia hay entre coordinadas locales y globales?"
 
 ---
 
@@ -210,69 +277,98 @@ Se utilizaron las siguientes indicaciones con asistencia de IA durante el desarr
 
 ### Aprendizajes
 
-A través de este taller, reforcé conceptos fundamentales de álgebra lineal aplicados a gráficos 3D. Comprendí cómo las matrices de transformación se multiplican en orden jerárquico, permitiendo que un objeto padre transmita sus transformaciones a todos sus descendientes. El uso de `useFrame` en React Three Fiber solidificó mi entendimiento sobre cómo Three.js actualiza geometrías y transformaciones en cada ciclo de renderizado.
+Durante este taller, reforcé significativamente mi comprensión del concepto fundamental de jerarquías en sistemas 3D. Aprendí que las transformaciones no son independientes, sino que se componen de forma acumulativa a través de la cadena jerárquica. Cuando rotamos un padre, todos sus descendientes heredan automáticamente esa rotación en sus coordenadas globales, mientras mantienen sus coordenadas locales sin cambios. Esto es crucial para la animación y el modelado 3D profesional, ya que permite crear estructuras complejas reutilizables (como esqueletos para rigging de personajes).
 
-Aprendí también la importancia de definir claramente el orden de rotación (XYZ, ZYX, etc.) para evitar gimbal lock, y cómo Leva simplifica significativamente la creación de interfaces de control sin necesidad de HTML/CSS adicional. La visualización interactiva de transformaciones encadenadas permitió entender intuitivamente conceptos que teóricamente eran abstractos.
+También adquirí experiencia práctica implementando este concepto en dos plataformas completamente diferentes, lo que solidificó mi entendimiento. En Unity, trabajé con GameObjects y transformaciones a través de la jerarquía del Inspector. En Three.js, utilicé grupos (`group`) para establecer la jerarquía, lo que conceptualmente logra el mismo resultado. La visualización interactiva en tiempo real con controles deslizantes fue especialmente instructiva: ver cómo cada cambio se propaga inmediatamente a través de toda la jerarquía hizo que el concepto fuera mucho más tangible.
 
 ### Dificultades
 
-La principal dificultad fue configurar correctamente la estructura de espacios locales vs. globales. Inicialmente, no comprendía completamente cómo las transformaciones locales se componían, lo que causaba comportamientos inesperados cuando múltiples niveles rotaban simultáneamente. Resolviste esto estudiando la documentación de Three.js sobre `Object3D` y experimentando iterativamente con valores pequeños en los sliders.
+La principal dificultad que enfrenté fue comprender la diferencia entre transformaciones locales y globales, especialmente al trabajar con jerarquías profundas. Inicialmente, esperaba que las rotaciones del nieto no afectaran su posición relativa al padre, pero las transformaciones composición es compleja. Resolví esto investigando cómo se aplican las matrices de transformación y la importancia del order de rotación (XYZ vs ZYX).
 
-Otra complejidad fue asegurar que Leva se integrara correctamente con React Three Fiber sin causar re-renders innecesarios. Comprender que `useControls` es un hook de Zustand y cómo se comporta con `useFrame` requirió depuración cuidadosa.
+Otra dificultad fue sincronizar los controles interactivos en Three.js de manera que actualizaran correctamente las transformaciones en cada fotograma. El hook `useFrame` requiere referencias precisas a los objetos y atualización manual antes de cada render. Implementé esto correctamente después de revisar la documentación de react-three-fiber y entender el ciclo de vida de los componentes.
+
+En Unity, el desafío fue entender cómo el `LineRenderer` toma posiciones en espacio mundial versus local, lo que causó que inicialmente las líneas no siguieran correctamente los nodos. Luego me percaté de que debía obtener las posiciones globales usando `transform.position`.
 
 ### Mejoras futuras
 
-En proyectos futuros, agregaría la capacidad de guardar y cargar estados de transformación, permitiendo guardar "snapshots" de configuraciones interesantes. También implementaría una visualización en tiempo real de las matrices de transformación numéricas para ayudar a estudiantes a comprender la matemática subyacente. Adicionalmente, podría crear un sistema más complejo con múltiples cadenas jerárquicas simultáneas, o integrar esta visualización en un editor 3D más completo con capacidades de selección y modificación de objetos.
+Para trabajos futuros, me gustaría:
+- Implementar un sistema de rigging básico para demostrar jerarquías aplicadas a esqueletos de personajes
+- Agregar importación de modelos 3D reales y aplicar la jerarquía a sus huesos/armaduras
+- Crear animaciones procedurales que utilicen jerarquías para generar movimientos complejos
+- Implementar un editor visual donde se pueda agregar/remover nodos dinámicamente en la jerarquía
+- Optimizar la renderización para jerarquías muy profundas (100+ niveles)
+
+---
+
+## Contribuciones grupales
+
+Taller realizado de forma individual. Todas las implementaciones, documentación y pruebas fueron realizadas por una sola persona (John Alejandro Pastor Sandoval).
 
 ---
 
 ## Estructura del proyecto
 
 ```
-semana_01_3_jerarquias_transformaciones/
+semana_1_3_jerarquias_transformaciones/
+├── unity/
+│   ├── Hierarchy/
+│   │   ├── Assets/
+│   │   │   ├── ControladorJerarquia.cs      # Script principal de control
+│   │   │   ├── InputSystem_Actions.inputactions
+│   │   │   ├── Scenes/
+│   │   │   ├── Settings/
+│   │   │   └── ...
+│   │   ├── Library/
+│   │   ├── Logs/
+│   │   ├── Packages/
+│   │   ├── ProjectSettings/
+│   │   ├── UserSettings/
+│   │   ├── Assembly-CSharp.csproj
+│   │   └── Hierarchy.slnx
+│   │
 ├── threejs/
 │   ├── src/
-│   │   ├── App.jsx
-│   │   ├── App.css
-│   │   ├── HierarchyDemo.jsx
+│   │   ├── App.jsx                         # Componente principal
+│   │   ├── HierarchyDemo.jsx               # Componente de jerarquía
 │   │   ├── main.jsx
-│   │   ├── index.css
-│   │   └── assets/
-│   ├── public/
+│   │   ├── App.css
+│   │   └── index.css
 │   ├── index.html
 │   ├── package.json
 │   ├── vite.config.js
 │   └── eslint.config.js
-├── unity/
-│   └── [Carpeta para implementación futura]
+│
 ├── media/
-│   ├── threejs_jerarquia_inicial.png
-│   ├── threejs_controles_leva.png
-│   ├── threejs_padre_rotado.png
-│   └── threejs_nieto_independiente.png
-└── README.md
+│   ├── unity-jerarquia.png                 # Captura estática de Unity
+│   ├── jerarquia-unity.gif                 # Animación de Unity
+│   ├── threejs_jerarquia_inicial.png       # Captura inicial de Three.js
+│   └── threejs_nieto_independiente.gif     # Animación del nieto
+│
+└── README.md                               # Este archivo
 ```
 
 ---
 
 ## Referencias
 
-- **Documentación oficial de Three.js**: https://threejs.org/docs/
-- **React Three Fiber Documentation**: https://docs.pmnd.rs/react-three-fiber/
-- **Leva Documentation**: https://github.com/pmndrs/leva
-- **Vite Documentation**: https://vitejs.dev/
-- **WebGL Fundamentals - Transformations**: https://webglfundamentals.org/webgl/lessons/webgl-3d-orthographic.html
-- **Concepts of Hierarchical Transformations**: https://learnopengl.com/Getting-started/Transformations
+- **Documentación de Unity - Transformaciones**: https://docs.unity3d.com/ScriptReference/Transform.html
+- **Tutorial de Matrices de Transformación 3D**: https://learnopengl.com/Getting-started/Transformations
+- **Documentación de Three.js**: https://threejs.org/docs/
+- **React Three Fiber - Guía Oficial**: https://docs.pmnd.rs/react-three-fiber/
+- **Leva - Controles Interactivos**: https://github.com/pmndrs/leva
+- **Computer Graphics: Principles and Practice** - Conceptos de jerarquías y transformaciones
+- **Real-Time Rendering** - Capítulos sobre transformaciones y jerarquías de escena
 
 ---
 
 ## Checklist de entrega
-- [x] Cumplimiento de los objetivos del taller
-- [x] Código limpio, comentado y bien estructurado
-- [x] README.md completo con toda la información requerida
-- [x] Evidencias visuales claras (imágenes/GIFs/videos en carpeta media/)
-- [x] Repositorio organizado siguiendo la estructura especificada
+
+- [x] Carpeta con nombre `semana_1_3_jerarquias_transformaciones`
+- [x] Código limpio y funcional en carpetas por entorno (Unity y Three.js)
+- [x] GIFs/imágenes incluidos con nombres descriptivos en carpeta `media/`
+- [x] README completo con todas las secciones requeridas
+- [x] Mínimo 2 capturas/GIFs por implementación 
 - [x] Commits descriptivos en inglés
-- [x] Nombre de carpeta correcto: semana_1_3_jerarquias_transformaciones
+- [x] Repositorio organizado y público
 
 ---

@@ -1,0 +1,46 @@
+# Unity
+/unity/Hierarchy/Library/
+/unity/Hierarchy/Logs/
+/unity/Hierarchy/Temp/
+/unity/Hierarchy/obj/
+/unity/Hierarchy/bin/
+/unity/Hierarchy/Build/
+/unity/Hierarchy/*.csproj
+/unity/Hierarchy/*.sln
+/unity/Hierarchy/.vs/
+/unity/Hierarchy/UserSettings/
+*.meta
+
+# Three.js / React
+/threejs/node_modules/
+/threejs/dist/
+/threejs/.vite/
+/threejs/.env.local
+/threejs/.env.*.local
+
+# IDE
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+.gitkeep
+.git
+
+# Archivos temporales
+*.tmp
+*.bak
+*.swp
+*~
+.cache/
+
+# Dependencias del sistema
+.env
+.env.local
+.env.*.local
