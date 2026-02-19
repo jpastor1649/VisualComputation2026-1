@@ -415,7 +415,6 @@ semana_02_3_camara_pinhole_calibracion/
 ## Checklist de entrega
 
 - [x] Carpeta con nombre `semana_02_3_camara_pinhole_calibracion`
-- [x] README.md completo con todas las secciones requeridas
 - [x] Código Python limpio y funcional en carpeta `python/`
 - [x] Código React Three Fiber limpio y funcional en carpeta `threejs/`
 - [x] Imágenes y GIFs en carpeta `media/` con referencias en README
@@ -423,9 +422,6 @@ semana_02_3_camara_pinhole_calibracion/
 - [x] Código relevante documentado con ejemplos
 - [x] Prompts de IA documentados
 - [x] Aprendizajes y dificultades explicados
-- [x] Referencias académicas incluidas
-- [x] Estructura de carpetas organizada correctamente
-- [x] Nombre de estudiante: John Alejandro Pastor Sandoval
 - [x] Implementación correcta del modelo pinhole
 - [x] Calibración exitosa documentada
 - [x] Distorsión visible y efectiva
