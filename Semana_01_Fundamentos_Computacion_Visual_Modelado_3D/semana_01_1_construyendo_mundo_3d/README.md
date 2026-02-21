@@ -83,12 +83,6 @@ Se desarrolló un visor 3D interactivo completamente funcional con React 19 y Re
 - @react-three/drei 10.7.7 (OrbitControls, Center, Edges, useGLTF, etc.)
 - Vite 7.3.1 (build tool)
 
-### Processing
-
-No se realizó implementación en Processing en este taller.
-
----
-
 ## Resultados visuales
 
 Los archivos multimedia se encuentran en la carpeta `media/`:
