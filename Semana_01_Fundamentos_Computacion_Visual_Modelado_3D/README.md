@@ -1,5 +1,7 @@
 # Semana 01 - Estructura de Carpetas
 
+Estructura de los talleres pertenecientes a la Semana 01
+
 ```
 semana_01_1_construyendo_mundo_3d/
 ├── media/
