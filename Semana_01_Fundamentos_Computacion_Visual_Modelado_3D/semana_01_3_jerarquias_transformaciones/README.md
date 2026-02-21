@@ -289,15 +289,6 @@ Otra dificultad fue sincronizar los controles interactivos en Three.js de manera
 
 En Unity, el desafío fue entender cómo el `LineRenderer` toma posiciones en espacio mundial versus local, lo que causó que inicialmente las líneas no siguieran correctamente los nodos. Luego me percaté de que debía obtener las posiciones globales usando `transform.position`.
 
-### Mejoras futuras
-
-Para trabajos futuros, me gustaría:
-- Implementar un sistema de rigging básico para demostrar jerarquías aplicadas a esqueletos de personajes
-- Agregar importación de modelos 3D reales y aplicar la jerarquía a sus huesos/armaduras
-- Crear animaciones procedurales que utilicen jerarquías para generar movimientos complejos
-- Implementar un editor visual donde se pueda agregar/remover nodos dinámicamente en la jerarquía
-- Optimizar la renderización para jerarquías muy profundas (100+ niveles)
-
 ---
 
 ## Contribuciones grupales
@@ -363,12 +354,12 @@ semana_1_3_jerarquias_transformaciones/
 
 ## Checklist de entrega
 
-- [x] Carpeta con nombre `semana_1_3_jerarquias_transformaciones`
-- [x] Código limpio y funcional en carpetas por entorno (Unity y Three.js)
-- [x] GIFs/imágenes incluidos con nombres descriptivos en carpeta `media/`
-- [x] README completo con todas las secciones requeridas
-- [x] Mínimo 2 capturas/GIFs por implementación 
-- [x] Commits descriptivos en inglés
-- [x] Repositorio organizado y público
+- ✅ Carpeta con nombre `semana_1_3_jerarquias_transformaciones`
+- ✅ Código limpio y funcional en carpetas por entorno (Unity y Three.js)
+- ✅ GIFs/imágenes incluidos con nombres descriptivos en carpeta `media/`
+- ✅ README completo con todas las secciones requeridas
+- ✅ Mínimo 2 capturas/GIFs por implementación 
+- ✅ Commits descriptivos en inglés
+- ✅ Repositorio organizado y público
 
 ---
