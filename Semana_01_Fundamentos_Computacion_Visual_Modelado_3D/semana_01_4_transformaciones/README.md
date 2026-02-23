@@ -259,15 +259,6 @@ En Processing, lograr que las múltiples transformaciones (traslación ondulante
 
 En Three.js, la documentación de React Three Fiber a veces resultó insuficiente. Resolver cómo dibuja las aristas del cubo manualmente (usando `lineSegments` y `bufferGeometry`) requirió investigación adicional y referencia de ejemplos en Stack Overflow.
 
-### Mejoras futuras
-
-Para futuras iteraciones, se implementaría:
-
-- **Python**: Agregar interactividad mediante widgets Jupyter para manipular parámetros de transformación en tiempo real, y extender a transformaciones 3D con proyecciones isométricas o perspectivas.
-- **Processing**: Crear una interfaz interactiva con sliders para controlar amplitudes y frecuencias de transformaciones, permitiendo experimentación en vivo.
-- **Three.js**: Implementar objetos geométricos más complejos (modelos 3D importados desde glTF), agregar física (colisiones) y post-procesamiento (bloom, deformación, etc.).
-- **General**: Desarrollar una comparación lado a lado de estas tres plataformas en un sitio web educativo, sincronizando las transformaciones para ilustrar cómo los mismos conceptos se traducen diferente en cada tecnología.
-
 ---
 
 ## Contribuciones grupales

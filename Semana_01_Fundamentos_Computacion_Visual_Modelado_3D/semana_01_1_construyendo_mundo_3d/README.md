@@ -83,12 +83,6 @@ Se desarrolló un visor 3D interactivo completamente funcional con React 19 y Re
 - @react-three/drei 10.7.7 (OrbitControls, Center, Edges, useGLTF, etc.)
 - Vite 7.3.1 (build tool)
 
-### Processing
-
-No se realizó implementación en Processing en este taller.
-
----
-
 ## Resultados visuales
 
 Los archivos multimedia se encuentran en la carpeta `media/`:
@@ -119,16 +113,12 @@ Visor mostrando el eyeball OBJ en modo "Caras" con material sólido azul. Panel 
 - Color picker
 - Controles de cámara
 
-Demostración de rotación y zoom interactivo usando OrbitControls.
-
 ![Visor 3D – Modo Todo (Wireframe + Faces)](./media/threejs_modo_todo.gif)
 
 Visor en modo "Todo" mostrando la geometría Icosahedron (más simple que OBJ para claridad visual):
 - Malla sólida semitransparente (púrpura)
 - Aristas blancas superpuestas
 - Estructura poligonal completamente visible
-
-Demuestra la capacidad de renderizar múltiples capas y cambiar de geometría en tiempo real.
 
 ---
 
@@ -310,22 +300,6 @@ Adicionalmente, se comprendió que **los modelos OBJ complejos cargan como Scene
 
 Una segunda dificultad fue **cargar un archivo OBJ de 81MB** en el navegador. `useLoader` carga de forma asincrónica, pero sin `Suspense` fallback el canvas quedaba en blanco. Con fallback sí funciona, pero el timeout de red requirió paciencia.
 
-### Mejoras futuras
-
-- Integrar **PLY, GLTF y FBX** además de OBJ para comparar formatos de archivo 3D.
-- Agregar **exportación de datos topológicos** (CSV/JSON) desde el visor de Three.js para análisis posterior.
-- Implementar **cálculo real de EdgesGeometry en Three.js** con worker thread para no bloquear renderizado en modelos grandes.
-- Crear una **galería de modelos** con drag-and-drop para cargar archivos locales en el navegador.
-- Extender Python con **análisis de normales por cara** para visualizar orientación de triángulos.
-- Agregar **métricas de rendimiento** (FPS, draw calls, memory usage) en el panel Three.js.
-- Implementar **export de GIFs desde Three.js** especular al flujo de Python/Vedo.
-
----
-
-## Contribuciones grupales (si aplica)
-
-Taller realizado de forma individual.
-
 ---
 
 ## Estructura del proyecto
@@ -382,10 +356,10 @@ semana_01_1_construyendo_mundo_3d/
 
 ## Checklist de entrega
 
-- [x] Carpeta con nombre `semana_01_1_construyendo_mundo_3d`
-- [x] Código limpio y funcional en carpetas por entorno (`python/`, `threejs/`)
-- [x] GIFs/imágenes incluidos con nombres descriptivos en carpeta `media/`
-- [x] README completo con todas las secciones requeridas
-- [x] Mínimo 2 capturas/GIFs por implementación
-- [x] Commits descriptivos en inglés
-- [x] Repositorio organizado y público
+- ✅ Carpeta con nombre `semana_01_1_construyendo_mundo_3d`
+- ✅ Código limpio y funcional en carpetas por entorno (`python/`, `threejs/`)
+- ✅ GIFs/imágenes incluidos con nombres descriptivos en carpeta `media/`
+- ✅ README completo con todas las secciones requeridas
+- ✅ Mínimo 2 capturas/GIFs por implementación
+- ✅ Commits descriptivos en inglés
+- ✅ Repositorio organizado y público
